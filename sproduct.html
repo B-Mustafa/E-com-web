@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Spartan", sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Global Styles */
+
+        h1 {
+            font-size: 50px;
+            line-height: 64px;
+            color: #222;
+        }
+
+        h2 {
+            font-size: 46px;
+            line-height: 54px;
+            color: #222;
+        }
+
+        h4 {
+            font-size: 20px;
+            color: #222;
+        }
+
+        h6 {
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #465b52;
+            margin: 15px 0 20px 0;
+        }
+
+        .section-p1 {
+            padding: 40px 80px;
+        }
+
+        .section-m1 {
+            margin: 40px 0;
+        }
+
+        body {
+            width: 100%;
+        }
+
+        button.normal {
+            font-size: 14px;
+            font-weight: 600;
+            padding: 15px 30px;
+            color: #000;
+            background-color: #fff;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        button.color {
+            font-size: 13px;
+            font-weight: 600;
+            padding: 11px 18px;
+            color: #fff;
+            background-color: transparent;
+            border: 1px solid #fff;
+            cursor: pointer;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        /*navbar section*/
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 80px;
+            background: #E3E6F3;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            position: sticky;
+            left: 0;
+            top: 0;
+        }
+
+        .header a img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar li {
+            list-style: none;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .navbar li a {
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+            transition: 0.3s ease;
+        }
+
+        .navbar li a:hover,
+        .navbar li a.active {
+            color: #00b6aa;
+        }
+
+        .navbar li a.active::after,
+        .navbar li a:hover::after {
+            content: "";
+            width: 30%;
+            height: 2px;
+            background: #00b6aa;
+            position: absolute;
+            left: 20px;
+            bottom: -4px;
+        }
+
+        .navbar li a i {
+            font-size: 20px;
+        }
+
+        .navbar .drop {
+            font-size: 20px;
+            padding-left: 10px;
+            cursor: pointer;
+        }
+
+        .navbar .drop:hover {
+            color: #00b6aa;
+        }
+
+        .hamburger {
+            display: none;
+            align-items: center;
+        }
+
+        #close {
+            display: none;
+        }
+
+        /*end*/
+        .banner {
+            background-image: url(img/banner/b1.jpg);
+            height: 40vh;
+            width: 100%;
+            background-size: cover;
+            display: flex;
+
+            padding: 14px;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .banner h2, .banner p {
+            color: #fff;
+        }
+
+        .product1 .container {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .product1 {
+            text-align: center;
+        }
+
+        .product1 .pro {
+            width: 23%;
+            min-width: 250px;
+            padding: 10px 12px;
+            border: 1px solid #cce7d0;
+            border-radius: 25px;
+            margin: 15px 0;
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: 0.2s ease;
+            position: relative;
+        }
+
+        .product1 .pro img {
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        .product1 .pro:hover {
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .product1 .pro .des span {
+            color: #606063;
+            font-size: 12px;
+        }
+
+        .product1 .pro .des h5 {
+            padding-top: 7px;
+            color: #1a1a1a;
+            font-size: 14px;
+        }
+
+        .product1 .pro .des {
+            text-align: start;
+            padding: 10px 0;
+            line-height: 1.5;
+        }
+
+        .product1 .pro .star {
+            color: rgb(243, 141, 25);
+        }
+
+        .product1 .pro .cart {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50px;
+            border: 1px solid #cce7d0;
+            background-color: #c8f6ea;
+            font-weight: 600;
+            color: #00b6aa;
+            position: absolute;
+            bottom: 24px;
+            right: 10px;
+        }
+
+        .npage {
+            text-align: center;
+        }
+
+        .npage a {
+            text-decoration: none;
+            color: white;
+            border-radius: 4px;
+            background-color: #00b6aa;
+            padding: 15px 20px;
+            font-weight: 600;
+        }
+
+        .npage a i {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .product-detail{
+            display: flex;
+            margin-top: 20px;
+        }
+        .product-detail .pro-detail{
+            width:50%;
+            padding-top:30px ;
+        }
+        .product-detail .pro-detail h4{
+            padding: 40px 0 20px 0;
+        }
+        .product-detail .pro-detail h2{
+            font-size: 26px;
+        }
+        .product-detail .pro-detail select{
+            display: block;
+            padding: 5px 10px;
+            margin-bottom: 10px;
+        }
+        .product-detail .pro-detail select:focus{
+            outline: none;
+        }
+        .product-detail .pro-detail input{
+            width: 50px;
+            height: 47px;
+            padding-left: 10px;
+            font-size: 15px;
+            margin-right: 15px;
+        }
+        .product-detail .pro-detail input:focus{
+            outline:none;
+        }
+        .product-detail .pro-detail button{
+            background-color: #00b6aa;
+            color: #fff;
+        }
+        .product-detail .product-image {
+            width: 40%;
+            margin-right: 15px;
+        }
+        .product-detail .pro-detail span{
+            line-height: 25px;
+        }
+        .small-image-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .small-col {
+            flex-basis: 24%;
+            cursor: pointer;
+        }
+
+        .newsletter {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+            background-image: url(img/banner/b14.png);
+            background-repeat: no-repeat;
+            background-position: 20% 30%;
+            background-color: #041e42;
+        }
+
+        .newsletter .news h4 {
+            color: white;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .newsletter .news p {
+            font-size: 14px;
+            font-weight: 600;
+            color: #818ea0;
+        }
+
+        .newsletter .news p span {
+            color: #ffbd27;
+        }
+
+        .newsletter input {
+            height: 3.125rem;
+            padding: 0 1.25rem;
+            font-size: 14px;
+            width: 100%;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            outline: none;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .newsletter button {
+            background-color: #00b6aa;
+            color: #fff;
+            white-space: nowrap;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .newsletter .form {
+            display: flex;
+            width: 40%;
+        }
+
+        footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        footer .col {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        footer .logo {
+            margin-bottom: 30px;
+        }
+
+        footer h4 {
+            font-size: 14px;
+            padding-bottom: 20px;
+        }
+
+        footer p {
+            font-size: 13px;
+            margin: 0 0 8px 0;
+            color: #000;
+        }
+
+        footer a {
+            font-size: 13px;
+            text-decoration: none;
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        footer .follow {
+            margin-top: 20px;
+        }
+
+        footer .follow i {
+            color: #00b6aa;
+            padding-right: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        footer .follow i:hover {
+            color: #000;
+        }
+
+        footer .pay img {
+            margin: 10px 0 15px 0;
+        }
+
+        footer a:hover {
+            color: #00b6aa;
+        }
+
+        footer .copyright {
+            width: 100%;
+            text-align: center;
+        }
+
+        @media(max-width:1000px) {
+            .section-p1 {
+                padding: 40px 40px;
+            }
+
+            .navbar {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                position: fixed;
+                top: 0;
+                right: -300px;
+                height: 100vh;
+                width: 300px;
+                background-color: #E3E6F3;
+                box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
+                padding: 80px 0 0 10px;
+                transition: 0.3s;
+            }
+
+            #nav.active {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                position: fixed;
+                top: 0;
+                right: 0px;
+                height: 100vh;
+                width: 300px;
+                background-color: #E3E6F3;
+                box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
+                padding: 80px 0 0 10px;
+            }
+
+            .navbar li {
+                margin-bottom: 25px;
+            }
+
+            .hamburger {
+                display: flex;
+                align-items: center;
+            }
+
+            .hamburger i {
+                color: #1a1a1a;
+                font-size: 24px;
+                padding-left: 20px;
+            }
+
+            #close {
+                display: flex;
+                position: absolute;
+                top: 30px;
+                left: 30px;
+                color: #222;
+                font-size: 24px;
+            }
+
+            .banner {
+                height: 70vh;
+                padding: 0 80px;
+                background-position: top 30% right 30%;
+            }
+
+            .feature {
+                justify-content: center;
+            }
+
+            .feature .fe-box {
+                margin: 15px;
+            }
+
+            .product1 .container {
+                justify-content: center;
+            }
+
+            .product1 .pro {
+                margin: 15px;
+            }
+
+            .sbanner {
+                height: 20vh;
+            }
+
+            .tbanner {
+                padding: 0 40px;
+            }
+
+            .tbanner .banner-box {
+                width: 28%;
+            }
+
+            .newsletter .form {
+                width: 70%;
+            }
+
+            .banner-box:nth-child(2) {
+                margin-top: 20px;
+            }
+            .product-detail{
+                display: flex;
+                flex-direction: column;
+            }
+            .product-detail .product-image{
+                width: 100%;
+                margin-right: 0px;
+            }
+            .product-detail .pro-detail{
+                width: 100%;
+            }
+        }
+
+        @media(max-width:480px) {
+            .section-p1 {
+                padding: 20px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            h2 {
+                font-size: 32px;
+            }
+
+            h1 {
+                font-size: 38px;
+            }
+
+            .banner {
+                padding: 0 20px;
+                background-position: 55%;
+            }
+
+            .feature .fe-box {
+                width: 155px;
+                margin: 0 0 15px 0;
+            }
+
+            .feature {
+                justify-content: space-between;
+            }
+
+            .product1 .pro {
+                width: 100%;
+            }
+
+            .sbanner {
+                height: 40vh;
+            }
+
+            .tbanner .banner-box {
+                height: 40vh;
+            }
+
+            .banner-box:nth-child(2) {
+                margin-top: 20px;
+            }
+
+            .tbanner {
+                padding: 0 20px;
+            }
+
+            .tbanner .banner-box {
+                width: 100%;
+            }
+
+            .newsletter .form {
+                width: 100%;
+            }
+
+            .newsletter {
+                padding: 40px 20px;
+            }
+
+            footer .copyright {
+                text-align: start;
+            }
+            .product-detail{
+                display: flex;
+                flex-direction: column;
+            }
+            .product-detail .product-image{
+                width: 100%;
+                margin-right: 0px;
+            }
+            .product-detail .pro-detail{
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <section class="header">
+        <a href="#"><img src="img/logo.png" alt="logo"></a>
+
+        <div>
+            <ul class="navbar" id="nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html" class="active">Clothing</a></li>
+                <li><a href="Electronics.html">Electronic</a></li>
+                <li><a href="Furniture.html">Furniture</a></li>
+                <li><a href="Footware.html">Footware</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html"><i class="fa fa-cart-shopping"></i></i></a></li>
+                <a href="#" id="close"><i class="fa fa-times"></i></a>
+            </ul>
+        </div>
+        <div class="hamburger" id="bar">
+            <a href="cart.html"><i class="fa fa-cart-shopping"></i></a>
+            <i class="fa fa-bars"></i>
+        </div>
+    </section>
+
+    <section class="product-detail section-p1">
+        <div class="product-image">
+            <img src="img/products/f1.jpg" width="100%" id="Mainimg" alt="">
+            <div class="small-image-group">
+                <div class="small-col">
+                    <img src="img/products/f1.jpg" width="100%" class="small-img" alt="">
+                </div>
+                <div class="small-col">
+                    <img src="img/products/f2.jpg" width="100%" class="small-img" alt="">
+                </div>
+                <div class="small-col">
+                    <img src="img/products/f3.jpg" width="100%" class="small-img" alt="">
+                </div>
+                <div class="small-col">
+                    <img src="img/products/f4.jpg" width="100%" class="small-img" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="pro-detail ">
+            <h6>Home / T-shirt</h6>
+            <h4>Men's Fashion T-shirt</h4>
+            <h2>₹2500</h2>
+            <select>
+                <option>Select Size</option>
+                <option>XL</option>
+                <option>XXL</option>
+                <option>Large</option>
+                <option>Small</option>
+                <option>Medium</option>
+            </select>
+            <input type="number" value="1">
+            <button class="normal">Add To Cart</button>
+            <h4>Product Details</h4>
+            <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo ea suscipit pariatur quibusdam mollitia
+                eligendi, sit ducimus quos magnam! Cum est quibusdam fuga necessitatibus accusantium sit. Suscipit
+                veritatis repellat, molestias, corporis culpa quia quidem earum doloremque hic nulla est eligendi fuga
+                fugiat eveniet porro. Maiores non nobis neque quae praesentium perspiciatis laudantium corporis, minus
+                assumenda. Rem sapiente dolor cumque esse magni pariatur magnam, molestiae, inventore ad vitae quam
+                harum hic numquam enim consectetur excepturi dolores, nobis nam? Animi, tempora iusto?</span>
+        </div>
+    </section>
+
+    <section class="product1 section-p1">
+        <h2>Similar Products</h2>
+        <p>Summer Collection New Mordern Design</p>
+        <div class="container">
+            <div class="pro">
+                <img src="img/products/n1.jpg" alt="t-1">
+                <div class="des">
+                    <span>Adidas</span>
+                    <h4>Funky T-shirt</h4>
+                    <div class="star">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <h5>₹2,500</h5>
+                </div>
+                <a href="#"><i class="fa fa-cart-shopping cart"></i></a>
+            </div>
+            <div class="pro">
+                <img src="img/products/n2.jpg" alt="t-1">
+                <div class="des">
+                    <span>Adidas</span>
+                    <h4>Funky T-shirt</h4>
+                    <div class="star">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <h5>₹2,500</h5>
+                </div>
+                <a href="#"><i class="fa fa-cart-shopping cart"></i></a>
+            </div>
+            <div class="pro">
+                <img src="img/products/n3.jpg" alt="t-1">
+                <div class="des">
+                    <span>Adidas</span>
+                    <h4>Funky T-shirt</h4>
+                    <div class="star">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <h5>₹2,500</h5>
+                </div>
+                <a href="#"><i class="fa fa-cart-shopping cart"></i></a>
+            </div>
+            <div class="pro">
+                <img src="img/products/n4.jpg" alt="t-1">
+                <div class="des">
+                    <span>Adidas</span>
+                    <h4>Funky T-shirt</h4>
+                    <div class="star">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <h5>₹2,500</h5>
+                </div>
+                <a href="#"><i class="fa fa-cart-shopping cart"></i></a>
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="newsletter section-p1">
+        <div class="news">
+            <h4>Sign Up for Newsletter</h4>
+            <p>Get E-mail updates about our latest shop and <span>special offers</span></p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="your email">
+            <button class="normal">Sign Up</button>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="img/logo.png" alt="">
+            <h4>Contact</h4>
+            <p><i class="fa fa-home"></i><strong>Address</strong>: xyz building , Abc road</p>
+            <p><i class="fa fa-phone"></i><strong>Phone</strong>: +91 000-000-0000</p>
+            <p><i class="fa fa-clock"></i><strong>Working Hours</strong>: 10AM-1PM / 2PM-8PM</p>
+            <div class="follow">
+                <h4>Follow Us</h4>
+                <div class="icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-linkedin"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & condition</a>
+            <a href="#">Contact us</a>
+        </div>
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track my Order</a>
+            <a href="#">Help</a>
+        </div>
+        <div class="pay">
+            <p>Secured Payment Gateways</p>
+            <img src="img/pay/pay.png" alt="">
+        </div>
+        <div class="copyright">
+            &copy Carter Ecommerce Store. All rights reserved
+        </div>
+
+    </footer>
+
+    <script>
+        var Mainimg = document.getElementById("Mainimg");
+        var smallimg = document.getElementsByClassName("small-img");
+
+        smallimg[0].onclick = function(){
+            Mainimg.src = smallimg[0].src;
+        }
+        smallimg[1].onclick = function(){
+            Mainimg.src = smallimg[1].src;
+        }
+        smallimg[2].onclick = function(){
+            Mainimg.src = smallimg[2].src;
+        }
+        smallimg[3].onclick = function(){
+            Mainimg.src = smallimg[3].src;
+        }
+
+    </script>
+    <script src="index.js"></script>
+</body>
+
+</html>

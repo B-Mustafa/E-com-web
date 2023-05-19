@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Spartan", sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Global Styles */
+
+        h1 {
+            font-size: 50px;
+            line-height: 64px;
+            color: #222;
+        }
+
+        h2 {
+            font-size: 46px;
+            line-height: 54px;
+            color: #222;
+        }
+
+        h4 {
+            font-size: 20px;
+            color: #222;
+        }
+
+        h6 {
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #465b52;
+            margin: 15px 0 20px 0;
+        }
+
+        .section-p1 {
+            padding: 40px 80px;
+        }
+
+        .section-m1 {
+            margin: 40px 0;
+        }
+
+        body {
+            width: 100%;
+        }
+
+        button.normal {
+            font-size: 14px;
+            font-weight: 600;
+            padding: 15px 30px;
+            color: #000;
+            background-color: #fff;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        button.color {
+            font-size: 13px;
+            font-weight: 600;
+            padding: 11px 18px;
+            color: #fff;
+            background-color: transparent;
+            border: 1px solid #fff;
+            cursor: pointer;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        /*navbar section*/
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 80px;
+            background: #E3E6F3;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            position: sticky;
+            left: 0;
+            top: 0;
+        }
+
+        .header a img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar li {
+            list-style: none;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .navbar li a {
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+            transition: 0.3s ease;
+        }
+
+        .navbar li a:hover,
+        .navbar li a.active {
+            color: #00b6aa;
+        }
+
+        .navbar li a.active::after,
+        .navbar li a:hover::after {
+            content: "";
+            width: 30%;
+            height: 2px;
+            background: #00b6aa;
+            position: absolute;
+            left: 20px;
+            bottom: -4px;
+        }
+
+        .navbar li a i {
+            font-size: 20px;
+        }
+
+        .navbar .drop {
+            font-size: 20px;
+            padding-left: 10px;
+            cursor: pointer;
+        }
+
+        .navbar .drop:hover {
+            color: #00b6aa;
+        }
+
+        .hamburger {
+            display: none;
+            align-items: center;
+        }
+
+        #close {
+            display: none;
+        }
+
+        /*end*/
+        .banner {
+            background-image: url(img/about/banner.png);
+            height: 40vh;
+            width: 100%;
+            background-size: cover;
+            display: flex;
+
+            padding: 14px;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .banner h2,
+        .banner p {
+            color: #fff;
+        }
+
+        .product1 .container {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .product1 {
+            text-align: center;
+        }
+
+        .product1 .pro {
+            width: 23%;
+            min-width: 250px;
+            padding: 10px 12px;
+            border: 1px solid #cce7d0;
+            border-radius: 25px;
+            margin: 15px 0;
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: 0.2s ease;
+            position: relative;
+        }
+
+        .product1 .pro img {
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        .product1 .pro:hover {
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .product1 .pro .des span {
+            color: #606063;
+            font-size: 12px;
+        }
+
+        .product1 .pro .des h5 {
+            padding-top: 7px;
+            color: #1a1a1a;
+            font-size: 14px;
+        }
+
+        .product1 .pro .des {
+            text-align: start;
+            padding: 10px 0;
+            line-height: 1.5;
+        }
+
+        .product1 .pro .star {
+            color: rgb(243, 141, 25);
+        }
+
+        .product1 .pro .cart {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50px;
+            border: 1px solid #cce7d0;
+            background-color: #c8f6ea;
+            font-weight: 600;
+            color: #00b6aa;
+            position: absolute;
+            bottom: 24px;
+            right: 10px;
+        }
+
+        .npage {
+            text-align: center;
+        }
+
+        .npage a {
+            text-decoration: none;
+            color: white;
+            border-radius: 4px;
+            background-color: #00b6aa;
+            padding: 15px 20px;
+            font-weight: 600;
+        }
+
+        .npage a i {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .about-head img {
+            width: 50%;
+            height: auto;
+        }
+
+        .about-head {
+            display: flex;
+            align-items: center;
+        }
+
+        .about-head div {
+            padding-left: 40px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .feature .fe-box {
+            width: 180px;
+            text-align: center;
+            padding: 25px 15px;
+            box-shadow: 20px 20px 34px rgba(0, 0, 0, 0.03);
+            border: 1px solid #cce7d0;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+
+        .feature .fe-box:hover {
+            box-shadow: 10px 10px 34px rgba(70, 62, 221, 0.06);
+        }
+
+        .feature .fe-box img {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .feature .fe-box h6 {
+            display: inline-block;
+            padding: 9px 8px 6px 8px;
+            line-height: 1;
+            border-radius: 4px;
+            color: #00b6aa;
+            background-color: #d1e8f2;
+        }
+
+        .feature .fe-box:nth-child(2) h6 {
+            background-color: #fddde4;
+        }
+
+        .feature .fe-box:nth-child(3) h6 {
+            background-color: #cdebbb;
+        }
+
+        .feature .fe-box:nth-child(4) h6 {
+            background-color: #cdd4f8;
+        }
+
+        .feature .fe-box:nth-child(5) h6 {
+            background-color: #f6dbf6;
+        }
+
+        .feature .fe-box:nth-child(6) h6 {
+            background-color: #fff2e5;
+        }
+        .contact-details{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .contact-details .details{
+            width: 40%;
+        }
+        .contact-details .details span{
+            font-size: 12px;
+        }
+        .contact-details .details h2,
+        .form-details form h2{
+            font-size: 26px;
+            line-height: 35px;
+            padding: 20px 0;
+        }
+        .contact-details .details h3{
+            font-size: 16px;
+            padding-bottom: 15px;
+        }
+        .contact-details .details li{
+            list-style: none;
+            display: flex;
+            padding: 10px 0;
+        }
+        .contact-details .details i{
+            font-size: 14px;
+            padding-right: 22px;
+
+        }
+        .contact-details .details p{
+            margin: 0;
+            font-size: 14px;
+        }
+        .contact-details .map{
+            width: 55%;
+            height: 400px;
+        }
+        .contact-details .map iframe{
+            width: 100%;
+            height: 100%;
+        }
+        .form-details{
+            display: flex;
+            margin: 30px;
+            padding: 80px;
+            border: 1px solid #e1e1e1;
+            border-radius: 6px;
+        }
+        .form-details form{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .form-details form span{
+            font-size: 14px;
+        }
+        .form-details form input{
+            width: 100%;
+            padding: 12px 15px;
+            outline: none;
+            margin-bottom: 20px;
+            border: 1px solid #e1e1e1;
+            border-radius: 10px;
+        }
+        .form-details form textarea{
+            width: 100%;
+            padding: 12px 15px;
+            outline: none;
+            margin-bottom: 20px;
+            border: 1px solid #e1e1e1;
+            border-radius: 10px;
+        }
+        .form-details form button{
+            background-color: #00b6aa;
+            color: #fff;
+            border-radius: 7px;
+        }
+        .newsletter {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+            background-image: url(img/banner/b14.png);
+            background-repeat: no-repeat;
+            background-position: 20% 30%;
+            background-color: #041e42;
+        }
+
+        .newsletter .news h4 {
+            color: white;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .newsletter .news p {
+            font-size: 14px;
+            font-weight: 600;
+            color: #818ea0;
+        }
+
+        .newsletter .news p span {
+            color: #ffbd27;
+        }
+
+        .newsletter input {
+            height: 3.125rem;
+            padding: 0 1.25rem;
+            font-size: 14px;
+            width: 100%;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            outline: none;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .newsletter button {
+            background-color: #00b6aa;
+            color: #fff;
+            white-space: nowrap;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .newsletter .form {
+            display: flex;
+            width: 40%;
+        }
+
+        footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        footer .col {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        footer .logo {
+            margin-bottom: 30px;
+        }
+
+        footer h4 {
+            font-size: 14px;
+            padding-bottom: 20px;
+        }
+
+        footer p {
+            font-size: 13px;
+            margin: 0 0 8px 0;
+            color: #000;
+        }
+
+        footer a {
+            font-size: 13px;
+            text-decoration: none;
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        footer .follow {
+            margin-top: 20px;
+        }
+
+        footer .follow i {
+            color: #00b6aa;
+            padding-right: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        footer .follow i:hover {
+            color: #000;
+        }
+
+        footer .pay img {
+            margin: 10px 0 15px 0;
+        }
+
+        footer a:hover {
+            color: #00b6aa;
+        }
+
+        footer .copyright {
+            width: 100%;
+            text-align: center;
+        }
+
+        @media(max-width:1000px) {
+            .section-p1 {
+                padding: 40px 40px;
+            }
+
+            .navbar {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                position: fixed;
+                top: 0;
+                right: -300px;
+                height: 100vh;
+                width: 300px;
+                background-color: #E3E6F3;
+                box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
+                padding: 80px 0 0 10px;
+                transition: 0.3s;
+            }
+
+            #nav.active {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                position: fixed;
+                top: 0;
+                right: 0px;
+                height: 100vh;
+                width: 300px;
+                background-color: #E3E6F3;
+                box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
+                padding: 80px 0 0 10px;
+            }
+
+            .navbar li {
+                margin-bottom: 25px;
+            }
+
+            .hamburger {
+                display: flex;
+                align-items: center;
+            }
+
+            .hamburger i {
+                color: #1a1a1a;
+                font-size: 24px;
+                padding-left: 20px;
+            }
+
+            #close {
+                display: flex;
+                position: absolute;
+                top: 30px;
+                left: 30px;
+                color: #222;
+                font-size: 24px;
+            }
+
+            .banner {
+                height: 70vh;
+                padding: 0 80px;
+                background-position: top 30% right 30%;
+            }
+
+            .feature {
+                justify-content: center;
+            }
+
+            .feature .fe-box {
+                margin: 15px;
+            }
+
+            .product1 .container {
+                justify-content: center;
+            }
+
+            .product1 .pro {
+                margin: 15px;
+            }
+
+            .sbanner {
+                height: 20vh;
+            }
+
+            .tbanner {
+                padding: 0 40px;
+            }
+
+            .tbanner .banner-box {
+                width: 28%;
+            }
+
+            .newsletter .form {
+                width: 70%;
+            }
+
+            .banner-box:nth-child(2) {
+                margin-top: 20px;
+            }
+        }
+
+        @media(max-width:480px) {
+            .section-p1 {
+                padding: 20px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            h2 {
+                font-size: 32px;
+            }
+
+            h1 {
+                font-size: 38px;
+            }
+
+            .banner {
+                padding: 0 20px;
+                background-position: 55%;
+            }
+
+            .feature .fe-box {
+                width: 155px;
+                margin: 0 0 15px 0;
+            }
+
+            .feature {
+                justify-content: space-between;
+            }
+
+            .product1 .pro {
+                width: 100%;
+            }
+
+            .sbanner {
+                height: 40vh;
+            }
+
+            .tbanner .banner-box {
+                height: 40vh;
+            }
+
+            .banner-box:nth-child(2) {
+                margin-top: 20px;
+            }
+
+            .tbanner {
+                padding: 0 20px;
+            }
+
+            .tbanner .banner-box {
+                width: 100%;
+            }
+
+            .newsletter .form {
+                width: 100%;
+            }
+
+            .newsletter {
+                padding: 40px 20px;
+            }
+
+            .about-head {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .about-head img {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .about-head div {
+                width: 100%;
+                padding-left: 0px;
+            }
+            .contact-details{
+                flex-direction: column;
+            }
+            .contact-details .details{
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            .contact-details .map{
+                width: 100%;
+            }
+            footer .copyright {
+                text-align: start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="header">
+        <a href="#"><img src="img/logo.png" alt="logo"></a>
+
+        <div>
+            <ul class="navbar" id="nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Clothing</a></li>
+                <li><a href="Electronics.html">Electronic</a></li>
+                <li><a href="Furniture.html">Furniture</a></li>
+                <li><a href="Footware.html">Footware</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="cart.html"><i class="fa fa-cart-shopping"></i></i></a></li>
+                <a href="#" id="close"><i class="fa fa-times"></i></a>
+            </ul>
+        </div>
+        <div class="hamburger" id="bar">
+            <a href="cart.html"><i class="fa fa-cart-shopping"></i></a>
+            <i class="fa fa-bars"></i>
+        </div>
+    </section>
+
+    <section class="banner">
+
+        <h2>#Contact Us</h2>
+
+        <p>Lets Talk</p>
+
+    </section>
+
+    <section class="contact-details section-p1">
+        <div class="details">
+            <span>Get In touch</span>
+            <h2>Location / Contact Details</h2>
+            <div>
+                <h3>Office</h3>
+                <li>
+                    <i class="fa fa-globe"></i>
+                    <p>Xyz Road , ABc building , Godhra-389001</p>
+                </li>
+                <li>
+                    <i class="fa fa-phone"></i>
+                    <p>+91 000-000-0000</p>
+                </li>
+                <li>
+                    <i class="fa fa-envelope"></i>
+                    <p>info@carter.outlook.com</p>
+                </li>
+                <li>
+                    <i class="fa fa-clock"></i>
+                    <p>10AM-7PM , MON-SUN</p>
+                </li>
+            </div>
+        </div>
+        <div class="map">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58855.76695138618!2d73.58359295702118!3d22.784469846764047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39609a4e398e5463%3A0x950bf4526c2cb4c8!2sGodhra%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1683441036235!5m2!1sen!2sin"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <section class="form-details section-p1">
+        <form action="">
+            <span>Leave a message</span>
+            <h2>We Love To Hear From You</h2>
+            <input type="text" placeholder="Enter your Name">
+            <input type="text" placeholder="Enter your Email">
+            <input type="text" placeholder="Enter Your Subject">
+            <textarea name="" id="" cols="30" rows="10" placeholder="Your MEssage"></textarea>
+            <button type="submit" class="normal">Send Message</button>
+        </form>
+    </section>
+
+    <section class="newsletter section-p1">
+        <div class="news">
+            <h4>Sign Up for Newsletter</h4>
+            <p>Get E-mail updates about our latest shop and <span>special offers</span></p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="your email">
+            <button class="normal">Sign Up</button>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="img/logo.png" alt="">
+            <h4>Contact</h4>
+            <p><i class="fa fa-home"></i><strong>Address</strong>: xyz building , Abc road</p>
+            <p><i class="fa fa-phone"></i><strong>Phone</strong>: +91 000-000-0000</p>
+            <p><i class="fa fa-clock"></i><strong>Working Hours</strong>: 10AM-1PM / 2PM-8PM</p>
+            <div class="follow">
+                <h4>Follow Us</h4>
+                <div class="icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-linkedin"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & condition</a>
+            <a href="#">Contact us</a>
+        </div>
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track my Order</a>
+            <a href="#">Help</a>
+        </div>
+        <div class="pay">
+            <p>Secured Payment Gateways</p>
+            <img src="img/pay/pay.png" alt="">
+        </div>
+        <div class="copyright">
+            &copy Carter Ecommerce Store. All rights reserved
+        </div>
+
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
